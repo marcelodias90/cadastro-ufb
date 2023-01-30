@@ -1,5 +1,5 @@
 import FormularioUf from "../components/forms/FormularioUf";
-import Tabela from "../components/forms/TabelaUf";
+import Tabela from "../components/table/TabelaUf";
 import Layout from "../components/Layout";
 import useUfs from "../hooks/useUfs";
 
