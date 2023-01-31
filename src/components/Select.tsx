@@ -2,7 +2,9 @@
 interface SelectProps {
     children?: any
     texto: string
-
+    id?: string
+    valor?: string
+    onChange?: (valor: any) => void
 }
 
 export default function Select(props: SelectProps) {
@@ -11,7 +13,7 @@ export default function Select(props: SelectProps) {
             <label className=" m-2 font-semibold text-lg">
                 {props.texto}
             </label>
-            <select>
+            <select id={props.id} onChange={e => props.onChange?.(e.target.value)}>
                 <option className="text-center">------------ Selecione o Estado ------------</option>
                 {props.children}
             </select>
