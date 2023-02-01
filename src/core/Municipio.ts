@@ -1,21 +1,17 @@
-import Uf from "./Uf"
-
 
 export default class Municipio {
     #id: string
     #nome: string
-    #uf : Uf
     #estado: string
 
-    constructor(nome: string, uf: Uf, estado: string, id: string=null){
+    constructor(nome: string, estado: string, id: string = null){
         this.#nome = nome
         this.#id = id
-        this.#uf = uf
-        this.#estado = uf.nomeUf
+        this.#estado = estado
     }
 
     static vazio(){
-        return new Municipio('', Uf.vazio(), '')
+        return new Municipio('', '', '')
     }
 
     get id(){
@@ -26,9 +22,7 @@ export default class Municipio {
         return this.#nome
     }
 
-    get uf(){
-        return this.#uf
-    }
+    
     get estado(){
         return this.#estado
     }

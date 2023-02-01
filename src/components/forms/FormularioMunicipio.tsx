@@ -1,12 +1,14 @@
 import {  useEffect, useState } from "react";
 import Municipio from "../../core/Municipio";
+import Uf from "../../core/Uf";
 import Botao from "../Botao";
 import Entrada from "../Entrada";
 import Select from "../Select";
 
 
 interface FormularioMunicipioProps {
-    municipio?: Municipio
+    estados: Uf[]
+    municipio: Municipio
     municipios: Municipio[]
     municipioMudou?: (municipio: Municipio) => void
     cancelado?: () => void
@@ -14,28 +16,29 @@ interface FormularioMunicipioProps {
 
 export default function FormularioMunicipio(props: FormularioMunicipioProps) {
     const id = props.municipio?.id
-
+    
+   
     const [nome, setNome] = useState('' as string)
     const [estado, setEstado] = useState('' as string)
-    const [estados, setEstados] = useState<Municipio[]>([Municipio.vazio()])
+    const [ufs, setUfs] = useState<Uf[]>([Uf.vazio()])
 
     useEffect(() => {
         
         setNome(props?.municipio?.nome ?? '');
-        setEstado(props?.municipio?.estado?? '');
-        setEstados(props?.municipios)
+        setEstado(props?.municipio?.estado ?? '');
+        setUfs(props?.estados?? [])
     }, [props]);
 
     function exibirSelect() {
 
         function ordenarNome(a, b){
-            let x = a.uf.nomeUf.toUpperCase(),
-                y = b.uf.nomeUf.toUpperCase();
+            let x = a.nomeUf.toUpperCase();
+            let y = b.nomeUf.toUpperCase();
             return x == y ? 0 : x > y ? 1 : -1
         }
-        return estados.sort(ordenarNome).map((estado) => { 
+        return ufs?.sort(ordenarNome).map((uf, i) => { 
             return (
-                <option key={estado.id} value={estado.id} className="text-center ">{estado.uf.nomeUf} - {estado.uf.sigla}</option>
+                <option key={uf.id} value={uf.nomeUf} className="text-center ">{uf.nomeUf} - {uf.sigla}</option>
             )
         })
     }
@@ -47,10 +50,10 @@ export default function FormularioMunicipio(props: FormularioMunicipioProps) {
                 <Entrada texto="Nome" valor={nome} valorMudou={setNome}/>
                 <Select id="lista-estados" valor={estado} texto="Estado" onChange={setEstado}>{exibirSelect()}</Select>
                 <div className="flex items-end justify-end m-3 ">
-                    <Botao cor={`${id ? 'green' : 'blue'}`} className="mr-2">
+                    <Botao cor={`${id ? 'green' : 'blue'}`} className="mr-2" onClick={() => props.municipioMudou?.(new Municipio(nome, estado, id))} >
                         {props.municipio?.id ? 'Alterar' : 'Salvar'}
                     </Botao>
-                    <Botao cor="gray" >
+                    <Botao cor="gray" onClick={props.cancelado}>
                         Cancelar
                     </Botao>
                 </div>

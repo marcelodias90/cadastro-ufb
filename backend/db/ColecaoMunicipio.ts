@@ -39,7 +39,7 @@ export default class ColecaoMunicipio implements MunicipioRepositorio {
     }
 
     private colecao() {
-        return firebase.firestore().collection('ufs').withConverter(this.#conversor)
+        return firebase.firestore().collection('municipios').withConverter(this.#conversor)
     }
 }
 

@@ -13,6 +13,8 @@ export default function useMunicipio() {
 
     useEffect(obterTodos, [])
 
+    
+
     function obterTodos(){
         repo.obterTodos().then(municipios => {
             setMunicipios(municipios)
@@ -37,6 +39,8 @@ export default function useMunicipio() {
         cleanForms()
         obterTodos()
     }
+
+    
 
     return{
         obterTodos,
