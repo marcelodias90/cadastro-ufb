@@ -1,4 +1,4 @@
-import Municipio from "../../core/Municipio"
+import Municipio from "../../core/models/Municipio"
 import BotaoAcoes from "../BotaoAcoes"
 import { IconeAlterar, IconeExcluir } from "../icons"
 

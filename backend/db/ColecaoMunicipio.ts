@@ -1,5 +1,5 @@
-import Municipio from "../../src/core/Municipio";
-import MunicipioRepositorio from "../../src/core/MunicipioRepositorio";
+import Municipio from "../../src/core/models/Municipio";
+import MunicipioRepositorio from "../../src/core/repositories/MunicipioRepositorio";
 import firebase from '../config'
 
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Uf from "../../core/Uf";
+import Uf from "../../core/models/Uf";
 import Botao from "../Botao";
 import Entrada from "../Entrada";
 
@@ -27,8 +27,8 @@ export default function FormularioUf(props: FormularioUfProps) {
                 {id ? (
                     <Entrada texto="Código" somenteLeitura valor={id} />
                 ) : false}
-                <Entrada texto="Nome " valor={nomeUf} valorMudou={setNomeUf} />
-                <Entrada texto="Sigla " valor={sigla} valorMudou={setSigla} />
+                <Entrada texto="Nome" tipo="text" valor={nomeUf} valorMudou={setNomeUf} obrigatorio/>
+                <Entrada texto="Sigla " valor={sigla} valorMudou={setSigla} obrigatorio/>
                 <div className="flex items-end justify-end m-3 ">
                     <Botao cor={`${id ? 'green' : 'blue'}`} className="mr-2" onClick={() => props.ufMudou?.(new Uf(nomeUf, sigla, id))}>
                         {props.uf?.id ? 'Alterar' : 'Salvar'}

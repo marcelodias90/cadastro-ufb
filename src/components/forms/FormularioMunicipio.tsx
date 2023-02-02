@@ -1,6 +1,6 @@
 import {  useEffect, useState } from "react";
-import Municipio from "../../core/Municipio";
-import Uf from "../../core/Uf";
+import Municipio from "../../core/models/Municipio";
+import Uf from "../../core/models/Uf";
 import Botao from "../Botao";
 import Entrada from "../Entrada";
 import Select from "../Select";

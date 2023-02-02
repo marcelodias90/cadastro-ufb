@@ -1,6 +1,6 @@
 import FormularioUf from "../components/forms/FormularioUf";
 import Layout from "../components/Layout";
-import Uf from "../core/Uf";
+import Uf from "../core/models/Uf";
 
 
 export default function Home() {

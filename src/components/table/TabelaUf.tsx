@@ -1,4 +1,4 @@
-import Uf from "../../core/Uf"
+import Uf from "../../core/models/Uf"
 import BotaoAcoes from "../BotaoAcoes"
 import { IconeAlterar, IconeExcluir } from "../icons"
 

@@ -6,6 +6,7 @@ interface EntradaProps {
     somenteLeitura?: boolean
     valorMudou?: (valor: any) => void
     children?: any
+    obrigatorio?: boolean
 }
 
 export default function Entrada(props: EntradaProps) {
@@ -17,6 +18,7 @@ export default function Entrada(props: EntradaProps) {
             </label>
             <input type={props.tipo ?? 'text'} value={props.valor} readOnly={props.somenteLeitura}
                 onChange={e => props.valorMudou?.(e.target.value)}
+                required={props.obrigatorio}
                 className={`    
                              border text-sm border-gray-100 rounded-lg focus:outline-none bg-gray-100  
                              px-4 py-2 focus:bg-white ${props.somenteLeitura ? 'bg-gray-300' : 'focus:border-blue-400'}  

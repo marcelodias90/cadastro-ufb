@@ -1,4 +1,4 @@
-import Uf from "./Uf";
+import Uf from "../models/Uf";
 
 
 export default interface UfRepositorio {

@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import ColecaoUf from "../../backend/db/ColecaoUf";
-import Uf from "../core/Uf";
-import UfRepositorio from "../core/UfRepositorio";
+import Uf from "../core/models/Uf";
+import UfRepositorio from "../core/repositories/UfRepositorio";
+import ufServices from "../core/services/ufService";
 
 export default function useUfs() {
     const repo: UfRepositorio = new ColecaoUf()
 
     const [uf, setUf] = useState<Uf>(Uf.vazio())
-    const [ufs, setUfs] = useState<Uf[]>([]) 
+    const [ufs, setUfs] = useState<Uf[]>([])
 
-    useEffect(obterTodos,[])
-    
+    useEffect(obterTodos, [])
+
 
     function obterTodos() {
         repo.obterTodos().then(ufs => {
@@ -19,7 +20,7 @@ export default function useUfs() {
     }
 
     function ufSelecionado(uf: Uf) {
-        setUf(uf)  
+        setUf(uf)
     }
 
     function cleanForms() {
@@ -37,7 +38,7 @@ export default function useUfs() {
         obterTodos()
     }
 
-    return{
+    return {
         uf,
         ufs,
         salvarUf,
