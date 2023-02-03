@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ColecaoUf from "../../backend/db/ColecaoUf";
 import Uf from "../core/models/Uf";
 import UfRepositorio from "../core/repositories/UfRepositorio";
-import ufServices from "../core/services/ufService";
+import { validador } from "../core/services/validador";
 
 export default function useUfs() {
     const repo: UfRepositorio = new ColecaoUf()
@@ -33,9 +33,15 @@ export default function useUfs() {
     }
 
     async function salvarUf(uf: Uf) {
-        await repo.salvar(uf)
-        cleanForms()
-        obterTodos()
+        if(validador.isStringValida(uf.nomeUf, uf.sigla)){
+            await repo.salvar(uf)
+            alert('Cadastrado com sucesso')
+            cleanForms()
+            obterTodos()
+        } else{
+           alert(`Preencha todos os campos`)  
+           return false
+        }   
     }
 
     return {

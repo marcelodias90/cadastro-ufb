@@ -1,6 +1,6 @@
 import useUfs from "../../hooks/useUfs";
 import Uf from "../models/Uf";
-import { UfException } from "../settings/functions";
+import { UfException } from "../settings/ufsettings";
 
 const {ufs} = useUfs()
 

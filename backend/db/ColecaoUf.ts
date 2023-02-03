@@ -3,7 +3,6 @@ import Uf from '../../src/core/models/Uf';
 import UfRepositorio from "../../src/core/repositories/UfRepositorio";
 
 
-
 export default class ColecaoUf implements UfRepositorio {
 
     #conversor = {
@@ -24,7 +23,6 @@ export default class ColecaoUf implements UfRepositorio {
             await this.colecao().doc(uf.id).set(uf)
             return uf
         } else {
-            
             const docRef = await this.colecao().add(uf)
             const doc = await docRef.get()
             return doc.data()
