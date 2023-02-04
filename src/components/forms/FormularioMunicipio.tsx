@@ -1,9 +1,11 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Municipio from "../../core/models/Municipio";
 import Uf from "../../core/models/Uf";
 import Botao from "../Botao";
 import Entrada from "../Entrada";
 import Select from "../Select";
+import services from "../../core/services/service";
+import { validarCamposNome, validarCamposEstado } from "../../core/settings/ufsettings";
 
 
 interface FormularioMunicipioProps {
@@ -16,27 +18,21 @@ interface FormularioMunicipioProps {
 
 export default function FormularioMunicipio(props: FormularioMunicipioProps) {
     const id = props.municipio?.id
-    
-   
+
+
     const [nome, setNome] = useState('' as string)
     const [estado, setEstado] = useState('' as string)
     const [ufs, setUfs] = useState<Uf[]>([Uf.vazio()])
 
     useEffect(() => {
-        
+
         setNome(props?.municipio?.nome ?? '');
         setEstado(props?.municipio?.estado ?? '');
-        setUfs(props?.estados?? [])
+        setUfs(props?.estados ?? [])
     }, [props]);
 
     function exibirSelect() {
-
-        function ordenarNome(a, b){
-            let x = a.nomeUf.toUpperCase();
-            let y = b.nomeUf.toUpperCase();
-            return x == y ? 0 : x > y ? 1 : -1
-        }
-        return ufs?.sort(ordenarNome).map((uf, i) => { 
+        return ufs?.sort(services.ordenarNomeUf).map((uf, i) => {
             return (
                 <option key={uf.id} value={uf.nomeUf} className="text-center ">{uf.nomeUf} - {uf.sigla}</option>
             )
@@ -46,9 +42,14 @@ export default function FormularioMunicipio(props: FormularioMunicipioProps) {
     return (
         <>
             <div className={`bg-red-300 w-2/5 rounded-md border-8 shadow-2xl ml-10 mr-10`}>
-                <Entrada texto="Código" somenteLeitura valor={id} />
-                <Entrada texto="Nome" valor={nome} valorMudou={setNome}/>
-                <Select id="lista-estados" valor={estado} texto="Estado" onChange={setEstado}>{exibirSelect()}</Select>
+                <Entrada id="codigo" texto="Código" somenteLeitura valor={id} />
+                <Entrada nameSpan="span"
+                    menssage="* Informe o nome do Município" validar={validarCamposNome}
+                    id="nome" texto="Nome" valor={nome} valorMudou={setNome}
+                />
+                <Select id="estados" valor={estado} texto="Estado" onChange={setEstado}>
+                    {exibirSelect()}
+                </Select>
                 <div className="flex items-end justify-end m-3 ">
                     <Botao cor={`${id ? 'green' : 'blue'}`} className="mr-2" onClick={() => props.municipioMudou?.(new Municipio(nome, estado, id))} >
                         {props.municipio?.id ? 'Alterar' : 'Salvar'}

@@ -1,6 +1,7 @@
 import Municipio from "../../core/models/Municipio"
 import BotaoAcoes from "../BotaoAcoes"
 import { IconeAlterar, IconeExcluir } from "../icons"
+import services from "../../core/services/service"
 
 interface TabelaMunicipioProps {
     municipios: Municipio[]
@@ -22,7 +23,7 @@ export default function TabelaMunicipio(props: TabelaMunicipioProps) {
     }
 
     function renderizarDados() {
-        return props.municipios?.map((municipio, i) => {
+        return props.municipios?.sort(services.ordenarEstado).map((municipio, i) => {
             return (
                 <tr key={municipio.id} className={`${i % 2 === 0 ? 'bg-red-200' : 'bg-red-100'}`}>
                     <td className="text-left p-4">{municipio.id}</td>

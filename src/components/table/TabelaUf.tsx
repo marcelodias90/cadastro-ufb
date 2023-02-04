@@ -1,6 +1,7 @@
 import Uf from "../../core/models/Uf"
 import BotaoAcoes from "../BotaoAcoes"
 import { IconeAlterar, IconeExcluir } from "../icons"
+import services from "../../core/services/service"
 
 interface TabelaUfProps {
     ufs: Uf[]
@@ -22,7 +23,7 @@ export default function TabelaUf(props: TabelaUfProps) {
     }
 
     function renderizarDados() {
-        return props.ufs?.map((uf, i) => {
+        return props.ufs?.sort(services.ordenarNomeUf).map((uf, i) => {
             return (
                 <tr key={uf.id} className={`${i % 2 === 0 ? 'bg-blue-200' : 'bg-blue-100'}`}>
                     <td className="text-left p-4">{uf.id}</td>

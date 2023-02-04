@@ -21,6 +21,7 @@ export default function FormularioUf(props: FormularioUfProps) {
         setNomeUf(props?.uf?.nomeUf ?? '');
         setSigla(props?.uf?.sigla ?? '');
     }, [props]);
+    
 
     return (
         <>

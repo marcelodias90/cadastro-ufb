@@ -9,6 +9,8 @@ interface LayoutProps {
     subtitulo: string
     children?: any
     className?: string
+    styleConteudo?: string
+    styletitulo?: string
 }
 
 export default function Layout(props: LayoutProps){
@@ -16,8 +18,8 @@ export default function Layout(props: LayoutProps){
         <div className={`flex flex-grow  bg-gray-100`}>
             <MenuLateral/>
             <div className={`ml-3 h-screen w-screen`}>
-                <Cabecalho titulo={props.titulo} subtitulo={props.subtitulo}/>
-                <Conteudo>
+                <Cabecalho titulo={props.titulo} subtitulo={props.subtitulo} className={props.styletitulo}/>
+                <Conteudo className={props.styleConteudo}>
                     {props.children}
                 </Conteudo>
                 <Footer/>

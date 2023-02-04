@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ColecaoMunicipio from "../../backend/db/ColecaoMunicipio";
 import Municipio from "../core/models/Municipio";
 import MunicipioRepositorio from "../core/repositories/MunicipioRepositorio";
-
+import { validador } from "../core/services/validador";
 
 
 export default function useMunicipio() {
@@ -13,15 +13,15 @@ export default function useMunicipio() {
 
     useEffect(obterTodos, [])
 
-    
 
-    function obterTodos(){
+
+    function obterTodos() {
         repo.obterTodos().then(municipios => {
             setMunicipios(municipios)
         })
     }
 
-    function municipioSelecionado(municipio: Municipio){
+    function municipioSelecionado(municipio: Municipio) {
         setMunicipio(municipio)
     }
 
@@ -34,15 +34,21 @@ export default function useMunicipio() {
         obterTodos()
     }
 
-    async function salvarMunicipio(municipio: Municipio){
-        await repo.salvar(municipio)
-        cleanForms()
-        obterTodos()
+    async function salvarMunicipio(municipio: Municipio) {
+        if (validador.isStringValida(municipio.nome, municipio.estado)) {
+            await repo.salvar(municipio)
+            alert('Cadastrado com sucesso')
+            cleanForms()
+            obterTodos()
+        } else {
+            alert(`Preencha todos os campos`)
+            return false
+        }
     }
 
-    
 
-    return{
+
+    return {
         obterTodos,
         municipio,
         municipios,
