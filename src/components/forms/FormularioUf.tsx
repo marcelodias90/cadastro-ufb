@@ -29,7 +29,7 @@ export default function FormularioUf(props: FormularioUfProps) {
                 {id ? (
                     <Entrada id="Código" texto="Código" somenteLeitura valor={id} />
                 ) : false}
-                <Entrada id="nome" texto="Nome" tipo="text" 
+                <Entrada id="nome" texto="Estado" tipo="text" 
                         valor={nomeUf} valorMudou={setNomeUf} 
                         obrigatorio menssage="* Informe o nome do UF"
                         validar={validarCamposNome} nameSpan="span"/>

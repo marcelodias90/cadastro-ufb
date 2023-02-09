@@ -4,25 +4,29 @@ import firebase from '../config'
 
 
 export default class ColecaoMunicipio implements MunicipioRepositorio {
-     
-    #conversor ={
-        toFirestore(municipio: Municipio){
+
+    #conversor = {
+        toFirestore(municipio: Municipio) {
             return {
                 nome: municipio.nome,
-                estado : municipio.estado
+                uf: {
+                    nomeUf: municipio.uf.nomeUf,
+                    sigla: municipio.uf.sigla,
+                    id: municipio.uf.id
+                }
             }
         },
-        fromFirestore(snapshot: firebase.firestore.QueryDocumentSnapshot, options: firebase.firestore.SnapshotOptions): Municipio{
+        fromFirestore(snapshot: firebase.firestore.QueryDocumentSnapshot, options: firebase.firestore.SnapshotOptions): Municipio {
             const dados = snapshot.data(options)
-            return new Municipio(dados.nome, dados.estado, snapshot.id)
+            return new Municipio(dados.nome, dados.uf, snapshot.id)
         }
     }
 
     async salvar(municipio: Municipio): Promise<Municipio> {
-        if(municipio?.id){
+        if (municipio?.id) {
             await this.colecao().doc(municipio.id).set(municipio)
             return municipio
-        }else {
+        } else {
             const docRef = await this.colecao().add(municipio)
             const doc = await docRef.get()
             return doc.data()

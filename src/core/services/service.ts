@@ -9,8 +9,14 @@ export default class services {
         return x == y ? 0 : x > y ? 1 : -1
     }
     static ordenarEstado(a, b) {
-        let x = a.estado.toUpperCase();
-        let y = b.estado.toUpperCase();
+        let x = a.uf.nomeUf.toUpperCase();
+        let y = b.uf.nomeUf.toUpperCase();
+        return x == y ? 0 : x > y ? 1 : -1
+    }
+
+    static ordenarNome(a, b) {
+        let x = a.nome.toUpperCase();
+        let y = b.nome.toUpperCase();
         return x == y ? 0 : x > y ? 1 : -1
     }
 

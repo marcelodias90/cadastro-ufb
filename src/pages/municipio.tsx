@@ -8,11 +8,11 @@ import useUfs from "../hooks/useUfs";
 export default function municipio() {
 
     const {municipio, municipios, cleanForms, excluirMunicipio, salvarMunicipio, municipioSelecionado} = useMunicipio()  
-    const {ufs} = useUfs()
+    const {ufs, uf} = useUfs()
 
     return (
         <Layout titulo="Cadastrar Município" subtitulo="Informe o nome do Município e o Estado" cor="bg-gradient-to-br from-gray-50 via-gray-100 to-red-300" >
-            <FormularioMunicipio estados={ufs} municipios={municipios} municipio={municipio} cancelado={cleanForms} municipioMudou={salvarMunicipio}/>
+            <FormularioMunicipio uf={uf} estados={ufs} municipios={municipios} municipio={municipio} cancelado={cleanForms} municipioMudou={salvarMunicipio}/>
             <TabelaMunicipio municipios={municipios} municipioSelecionado={municipioSelecionado} municipioExcluido={excluirMunicipio}/>
         </Layout>
     )

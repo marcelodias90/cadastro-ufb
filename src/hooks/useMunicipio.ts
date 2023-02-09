@@ -37,10 +37,12 @@ export default function useMunicipio() {
     async function salvarMunicipio(municipio: Municipio) {
         if (validador.isStringValida(municipio.nome, municipio.estado)) {
             await repo.salvar(municipio)
+            console.log(municipio)
             alert('Cadastrado com sucesso')
             cleanForms()
             obterTodos()
         } else {
+            console.log(municipio)
             alert(`Preencha todos os campos`)
             return false
         }

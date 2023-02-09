@@ -13,6 +13,7 @@ interface LayoutProps {
     styleConteudo?: string
     styletitulo?: string
     cor?: string
+    
 }
 
 export default function Layout(props: LayoutProps){
@@ -21,9 +22,8 @@ export default function Layout(props: LayoutProps){
             <MenuLateral/>
             <div className={`ml-3 h-screen w-screen`}>
                 <Cabecalho titulo={props.titulo} subtitulo={props.subtitulo} className={props.styletitulo}/>
-                
                 <Conteudo className={props.styleConteudo}>
-                    {props.children}
+                    {props.children} 
                 </Conteudo>
                 <Footer/>
             </div>
