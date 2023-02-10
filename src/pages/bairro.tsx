@@ -1,4 +1,3 @@
-import Carregamento from "../components/Carregamento";
 import FormularioBairro from "../components/forms/Formulariobairro";
 import Layout from "../components/Layout";
 import useBairro from "../hooks/useBairro";

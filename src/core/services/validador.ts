@@ -4,7 +4,7 @@ export class validador {
 
     static isStringValida(props: string, props1?: string, props2?: string) {
         if (props === null || props === '') {
-
+            
             return false
         }
         if (props1 === null || props1 === '') {
@@ -17,4 +17,6 @@ export class validador {
             return true
         }
     }
+
+   
 }

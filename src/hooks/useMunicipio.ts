@@ -3,6 +3,7 @@ import ColecaoMunicipio from "../../backend/db/ColecaoMunicipio";
 import Municipio from "../core/models/Municipio";
 import MunicipioRepositorio from "../core/repositories/MunicipioRepositorio";
 import { validador } from "../core/services/validador";
+import { alertaSucess, alertaErro } from "../core/settings/ufsettings";
 
 
 export default function useMunicipio() {
@@ -27,6 +28,7 @@ export default function useMunicipio() {
 
     function cleanForms() {
         setMunicipio(Municipio.vazio())
+        
     }
 
     async function excluirMunicipio(municipio: Municipio) {
@@ -35,15 +37,13 @@ export default function useMunicipio() {
     }
 
     async function salvarMunicipio(municipio: Municipio) {
-        if (validador.isStringValida(municipio.nome, municipio.estado)) {
+        if (validador.isStringValida(municipio.nome, municipio.uf.nomeUf)) {
             await repo.salvar(municipio)
-            console.log(municipio)
-            alert('Cadastrado com sucesso')
+            alertaSucess(municipio.nome, municipio.id)
             cleanForms()
             obterTodos()
         } else {
-            console.log(municipio)
-            alert(`Preencha todos os campos`)
+            alertaErro()
             return false
         }
     }

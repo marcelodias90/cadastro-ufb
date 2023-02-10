@@ -1,18 +1,21 @@
+import Municipio from "./Municipio"
+import Uf from "./Uf"
+
 export default class Bairro {
     #id: string
     #nome: string
-    #estado: string
-    #municipio: string
+    #municipio: Municipio
+    #uf: Uf
 
-    constructor(nome: string, estado: string, municipio: string, id: string = null ){
+    constructor(nome: string, municipio: Municipio, uf: Uf, id: string = null ){
         this.#nome = nome
-        this.#estado = estado
         this.#municipio = municipio
         this.#id = id
+        this.#uf = uf
     }
 
     static vazio(){
-        return new Bairro('', '', '', '')
+        return new Bairro('', Municipio.vazio(), Uf.vazio(), '')
     }
 
     get id(){
@@ -23,12 +26,13 @@ export default class Bairro {
         return this.#nome
     }
 
-    get estado(){
-        return this.#estado
-    }
-
+    
     get municipio(){
         return this.#municipio
+    }
+
+    get uf(){
+        return this.#uf
     }
 
 }

@@ -32,7 +32,7 @@ export default function useBairro(){
     }
 
     async function salvarBairro(bairro: Bairro){
-        if(validador.isStringValida(bairro.nome, bairro.estado, bairro.municipio)){
+        if(validador.isStringValida(bairro.nome, bairro.municipio.uf.nomeUf, bairro.municipio.nome)){
             await repo.salvar(bairro)
             alert('Cadastrado com Sucesso')
             cleanForms()

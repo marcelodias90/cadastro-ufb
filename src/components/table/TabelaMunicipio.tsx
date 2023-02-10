@@ -28,7 +28,7 @@ export default function TabelaMunicipio(props: TabelaMunicipioProps) {
                 <tr key={municipio.id} className={`${i % 2 === 0 ? 'bg-red-200' : 'bg-red-100'}`}>
                     <td className="text-left p-4">{municipio.id}</td>
                     <td className="text-left p-4">{municipio.nome}</td>
-                    <td className="text-left p-4">{municipio.uf.id}</td>
+                    <td className="text-left p-4">{municipio.uf.nomeUf}</td>
                     {renderizarAcoes(municipio)}
                 </tr>
             )

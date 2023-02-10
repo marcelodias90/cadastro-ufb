@@ -9,7 +9,7 @@ export default function uf() {
    
     return (
         <Layout titulo="Cadastrar UF" subtitulo="Informe o nome e Sigla do Estado" cor="bg-gradient-to-br from-gray-50 via-gray-100 to-blue-300">
-                <FormularioUf uf={uf} cancelado={cleanForms} ufMudou={salvarUf}/>
+                <FormularioUf uf={uf} cancelado={cleanForms} ufMudou={salvarUf} />
                 <Tabela ufs={ufs} ufSelecionado={ufSelecionado} ufExcluido={excluirUf}/>
         </Layout>
     )

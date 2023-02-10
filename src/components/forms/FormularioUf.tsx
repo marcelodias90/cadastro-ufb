@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import Uf from "../../core/models/Uf";
 import Botao from "../Botao";
 import Entrada from "../Entrada";
-import { validarCamposNome, validarCamposSigla } from "../../core/settings/ufsettings";
+import { validarCamposNome, validarCamposSigla, verificarExistente } from "../../core/settings/ufsettings";
 
 interface FormularioUfProps {
     uf: Uf
     ufMudou?: (uf: Uf) => void
     cancelado?: () => void
+    
 }
 
 export default function FormularioUf(props: FormularioUfProps) {
@@ -32,7 +33,7 @@ export default function FormularioUf(props: FormularioUfProps) {
                 <Entrada id="nome" texto="Estado" tipo="text" 
                         valor={nomeUf} valorMudou={setNomeUf} 
                         obrigatorio menssage="* Informe o nome do UF"
-                        validar={validarCamposNome} nameSpan="span"/>
+                        validar={verificarExistente} nameSpan="span" />
                 <Entrada id="sigla" texto="Sigla " 
                          valor={sigla} valorMudou={setSigla} 
                          obrigatorio menssage="* Informe a Sigla"

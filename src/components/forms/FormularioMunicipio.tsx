@@ -12,7 +12,6 @@ interface FormularioMunicipioProps {
     estados: Uf[]
     uf: Uf
     municipio: Municipio
-    municipios: Municipio[]
     municipioMudou?: (municipio: Municipio) => void
     cancelado?: () => void
 }
@@ -26,22 +25,25 @@ export default function FormularioMunicipio(props: FormularioMunicipioProps) {
     const [uf, setUf] = useState<Uf>(Uf.vazio())
 
     useEffect(() => {
-
         setNome(props?.municipio?.nome ?? '');
-        setUf(props?.uf ?? Uf.vazio())
+        setUf(props?.municipio.uf ?? Uf.vazio())
         setUfs(props?.estados ?? [])
     }, [props]);
 
     function exibirSelect() {
-
         return ufs?.sort(services.ordenarNomeUf).map((uf, i) => {
-               
                 return (
-                    <option key={uf.id} value={JSON.stringify(uf)} className="text-center "  >{uf.nomeUf} - {uf.sigla}</option>
+                    <option key={uf.id} value={uf.id} className="text-center " >{uf.nomeUf} - {uf.sigla}</option>
                 )
             }
         )
     }
+
+    const handleChange = event => {
+        const selectedId = event
+        const selectedOption = ufs.find(uf => uf.id === selectedId);
+        setUf(selectedOption);
+      };
     
 
     return (
@@ -52,7 +54,7 @@ export default function FormularioMunicipio(props: FormularioMunicipioProps) {
                         menssage="* Informe o nome do Município" validar={validarCamposNome}
                         id="nome" texto="Município" valor={nome} valorMudou={setNome}
                     />
-                    <Select id="estados" valor={JSON.stringify(uf)} texto="Estado" onChange={setUf}>
+                    <Select id="estados" valor={uf.id} texto="Estado" onChange={handleChange} >
                         {exibirSelect()}
                     </Select>
                     <div className="flex items-end justify-end m-3 ">

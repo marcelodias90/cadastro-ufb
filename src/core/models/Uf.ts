@@ -10,7 +10,7 @@ export default class Uf {
     }
 
     static vazio(){
-        return new Uf('', '')
+        return new Uf('', '', '')
     }
 
     get id(){

@@ -3,6 +3,7 @@ import ColecaoUf from "../../backend/db/ColecaoUf";
 import Uf from "../core/models/Uf";
 import UfRepositorio from "../core/repositories/UfRepositorio";
 import { validador } from "../core/services/validador";
+import { alertaSucess, alertaErro, verificarExistente } from "../core/settings/ufsettings";
 
 export default function useUfs() {
     const repo: UfRepositorio = new ColecaoUf()
@@ -33,16 +34,18 @@ export default function useUfs() {
     }
 
     async function salvarUf(uf: Uf) {
-        if(validador.isStringValida(uf.nomeUf, uf.sigla)){
+       
+        if(validador.isStringValida(uf.nomeUf, uf.sigla)){         
             await repo.salvar(uf)
-            alert('Cadastrado com sucesso')
+            alertaSucess(uf.nomeUf, uf.id)
             cleanForms()
             obterTodos()
         } else{
-           alert(`Preencha todos os campos`)  
+           alertaErro()
            return false
         }   
     }
+    
 
     return {
         uf,

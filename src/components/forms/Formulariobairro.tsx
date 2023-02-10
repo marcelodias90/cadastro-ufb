@@ -19,7 +19,6 @@ export default function FormularioBairro(props: FormularioBairroProps) {
     const id = props.bairro?.id
 
     const [nome, setNome] = useState('' as string)
-    const [estado, setEstado] = useState('' as string)
     const [estados, setEstados] = useState<Uf[]>([Uf.vazio()])
     const [municipio, setMunicipio] = useState('' as string)
     const [municipios, setMunicipios] = useState<Municipio[]>([Municipio.vazio()])
@@ -27,7 +26,7 @@ export default function FormularioBairro(props: FormularioBairroProps) {
     useEffect(() => {
         setNome(props?.bairro?.nome ?? '');
         setEstados(props?.estados ?? []);
-        setMunicipio(props?.bairro?.municipio ?? '');
+        setMunicipio(props?.bairro?.municipio.nome ?? '');
         setMunicipios(props?.municipios ?? []);
     })
 

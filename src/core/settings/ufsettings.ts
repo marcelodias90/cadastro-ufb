@@ -1,3 +1,6 @@
+import swal from "sweetalert"
+
+
 
 
 export function UfException(message) {
@@ -34,6 +37,19 @@ function removeErrorSelect(props, props1) {
 
 }
 
+export function verificarExistente(props)  {
+    
+    props.map(uf => {
+       if ((<HTMLInputElement>document.getElementById('nome')).value === uf.nomeUf) { 
+            return true
+        } 
+        else{
+            return false
+        } 
+    }) 
+    
+}
+
 export function validarCamposNome() {
     if ((<HTMLInputElement>document.getElementById('nome')).value === '') { // converter o resultado getElementById() para HTMLInputElement
         setError('nome', 'span')
@@ -55,4 +71,24 @@ export function validarCamposEstado() {
     } else{
         removeErrorSelect('estados', 'span')
     }
+}
+
+export function alertaSucess(props: string, props1: any){
+    const title = props1?  "Alterado" : "Cadastrado"
+    swal({
+        title: `${title} com Sucesso`,
+        text: props,
+        icon: "success"
+    })
+}
+
+export function alertaErro(){
+    
+    swal({
+        title: "Cadastro Inválido",
+        text: `Informe todo os campos`,
+        icon: "error",
+        timer: 3000
+        
+    })
 }
