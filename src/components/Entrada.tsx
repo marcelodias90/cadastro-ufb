@@ -21,7 +21,7 @@ export default function Entrada(props: EntradaProps) {
                 {props.texto}
             </label>
             <input type={props.tipo ?? 'text'} id={props.id} value={props.valor} readOnly={props.somenteLeitura}
-                onChange={e => props.valorMudou?.(e.target.value)} onBlur={e => props.validar(props)}
+                onChange={e => props.valorMudou?.(e.target.value)} onBlur={props.validar}
                 required={props.obrigatorio}
                 className={`    
                              border text-sm border-gray-100 rounded-lg focus:outline-none bg-gray-100  

@@ -3,6 +3,7 @@ import ColecaoBairro from "../../backend/db/ColecaoBairro";
 import Bairro from "../core/models/Bairro";
 import BairroRepositorio from "../core/repositories/BairroRepositorio";
 import { validador } from "../core/services/validador";
+import { alertaErro, alertaSucess } from "../core/settings/ufsettings";
 
 export default function useBairro(){
     const repo: BairroRepositorio = new ColecaoBairro()
@@ -33,12 +34,13 @@ export default function useBairro(){
 
     async function salvarBairro(bairro: Bairro){
         if(validador.isStringValida(bairro.nome, bairro.municipio.uf.nomeUf, bairro.municipio.nome)){
+            console.log(bairro)
             await repo.salvar(bairro)
-            alert('Cadastrado com Sucesso')
+            alertaSucess(bairro.nome, bairro.id)
             cleanForms()
             obterTodos()
         }else{
-            alert('Preencha todos os campos')
+            alertaErro()
             return false
         }
     }

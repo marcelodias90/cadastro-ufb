@@ -26,14 +26,14 @@ export default function FormularioUf(props: FormularioUfProps) {
 
     return (
         <>
-            <div className={`bg-blue-200 w-2/5 rounded-md border-8 shadow-2xl ml-10 mr-10`}>
+            <div className={`bg-blue-200 w-2/5 rounded-md border-8 border-gray-300 shadow-2xl ml-10 mr-10`}>
                 {id ? (
                     <Entrada id="Código" texto="Código" somenteLeitura valor={id} />
                 ) : false}
                 <Entrada id="nome" texto="Estado" tipo="text" 
                         valor={nomeUf} valorMudou={setNomeUf} 
                         obrigatorio menssage="* Informe o nome do UF"
-                        validar={verificarExistente} nameSpan="span" />
+                        validar={validarCamposNome} nameSpan="span" />
                 <Entrada id="sigla" texto="Sigla " 
                          valor={sigla} valorMudou={setSigla} 
                          obrigatorio menssage="* Informe a Sigla"

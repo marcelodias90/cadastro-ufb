@@ -5,6 +5,7 @@ interface SelectProps {
     id?: string
     valor?: string | number
     onChange?: (valor: any) => void
+    selectText: string
 }
 
 export default function Select(props: SelectProps) {
@@ -14,7 +15,7 @@ export default function Select(props: SelectProps) {
                 {props.texto}
             </label>
             <select value={props.valor}  className=" rounded-md" id={props.id} onChange={e => props.onChange?.(e.target.value)}>
-               <option value='' disabled className="text-center" >------------ Selecione o Estado ------------</option>
+               <option value='' disabled className="text-center" >------------ Selecione o {props.selectText} ------------</option>
                 {props.children} 
             </select>
         </div>

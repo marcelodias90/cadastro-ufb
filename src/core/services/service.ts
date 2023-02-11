@@ -20,6 +20,15 @@ export default class services {
         return x == y ? 0 : x > y ? 1 : -1
     }
 
+    static isEmpty(obj) {
+        for(var prop in obj) {
+            if(obj.hasOwnProperty(prop))
+                return false;
+        }
+    
+        return true;
+    }
+
  
 
     // existente(props: string){
