@@ -13,9 +13,11 @@ export default function MenuItem(props: MenuItemProps) {
     function renderizarLink(){
         const font = props.className? "black" : "dark"
         return(
-            <div className="ml-3 flex items-center justify-start">
+            <div className="group  ml-3 flex items-center justify-start">
+                <div className=" group-hover:scale-125">
                 {props.icone}
-                <span className={`font-${font} text-1xl text-gray-800  flex m-5`}>
+                </div>
+                <span className={`font-${font} text-1xl text-gray-800  flex m-5 group-hover:scale-105`}>
                     {props.texto}
                 </span>
             </div>

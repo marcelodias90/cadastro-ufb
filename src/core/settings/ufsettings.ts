@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import swal from "sweetalert"
 
 
@@ -92,3 +93,11 @@ export function alertaErro(){
         
     })
 }
+
+    //   $(window).on('load',function(){
+    //     $("loading").fadeOut(1000);
+    //   });
+       
+
+
+
