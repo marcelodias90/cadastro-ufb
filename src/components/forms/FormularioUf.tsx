@@ -26,7 +26,7 @@ export default function FormularioUf(props: FormularioUfProps) {
 
     return (
         <>
-            <div className={`bg-blue-200 w-2/5 rounded-md border-8 border-gray-300 shadow-2xl ml-10 mr-10`}>
+            <div className={`bg-blue-200 w-2/5 rounded-md border-8 border-blue-200 shadow-2xl ml-10 mr-10`}>
                 {id ? (
                     <Entrada id="Código" texto="Código" somenteLeitura valor={id} />
                 ) : false}

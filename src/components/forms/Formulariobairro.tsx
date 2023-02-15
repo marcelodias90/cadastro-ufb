@@ -71,7 +71,7 @@ export default function FormularioBairro(props: FormularioBairroProps) {
 
     return (
         <>
-            <div className={`bg-green-300 w-2/5 rounded-md border-8 border-gray-300 shadow-2xl ml-10 mr-10`}>
+            <div className={`bg-green-300 w-2/5 rounded-md border-8 border-green-300 shadow-2xl ml-10 mr-10`}>
                 
                 <Select id="estados" valor={estado.id} texto="Estado"  onChange={handleChangeEstado} selectText="Estado">
                     {exibirSelectEstado()}

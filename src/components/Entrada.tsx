@@ -11,12 +11,16 @@ interface EntradaProps {
     validar?: (valor: any) => void
     menssage?: string
     nameSpan?: string
+    tamanho?: '1' | '2' | '3' 
 }
 
+
 export default function Entrada(props: EntradaProps) {
+    const tamanho = props.tamanho ?? '3'
+
     return (
 
-        <div className={`flex flex-col ml-10 p-2 w-3/4`}>
+        <div className={`flex flex-col ml-10 p-2  w-${tamanho}/4`}>
             <label className=" m-2 font-semibold text-lg">
                 {props.texto}
             </label>

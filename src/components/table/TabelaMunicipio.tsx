@@ -50,7 +50,7 @@ export default function TabelaMunicipio(props: TabelaMunicipioProps) {
 
     return (
 
-        <div className=" overflow-auto max-h-96 w-3/6 shadow-2xl  border-8 border-gray-300">
+        <div className=" overflow-auto max-h-96 w-3/6 shadow-2xl  border-8 border-red-200">
             <table className=" w-full ">
                 <thead className=" sticky top-0 bg-gray-100">
                     {renderizarCabecalho()}

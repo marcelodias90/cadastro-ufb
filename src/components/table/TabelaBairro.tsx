@@ -50,7 +50,7 @@ export default function TabelaBairro(props: TabelaBairroProps) {
     }
 
     return(
-        <div className=" overflow-auto max-h-96 w-3/6 shadow-2xl  border-8 border-gray-300">
+        <div className=" overflow-auto max-h-96 w-3/6 shadow-2xl  border-8 border-green-200">
             <table className="w-full">
                 <thead>
                     {renderizarCabecalho()}

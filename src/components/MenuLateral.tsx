@@ -13,7 +13,7 @@ export default function MenuLateral() {
                 <MenuItem texto="Cadastro UF" icone={IconeCadastro} url="/uf"/>
                 <MenuItem texto="Cadastro Municipio" icone={IconeCadastro}  url="/municipio"/>
                 <MenuItem texto="Cadastro Bairro"  icone={IconeCadastro} url="/bairro"/>
-                <MenuItem texto="Cadastro Endereço" icone={IconeCadastro} url="/endereço"/>
+                <MenuItem texto="Cadastro Endereço" icone={IconeCadastro} url="/endereco"/>
                 <MenuItem texto="Cadastro Pessoa" icone={IconePessoa} url="/pessoa"/>
             </ul>
         </aside>

@@ -48,7 +48,7 @@ export default function FormularioMunicipio(props: FormularioMunicipioProps) {
 
     return (
             <>
-                <div className={`bg-red-300 w-2/5 rounded-md border-8 border-gray-300 shadow-2xl ml-10 mr-10`}>
+                <div className={`bg-red-300 w-2/5 rounded-md border-8 border-red-300 shadow-2xl ml-10 mr-10`}>
                     <Entrada id="codigo" texto="Código" somenteLeitura valor={id} />
                     <Entrada nameSpan="span"
                         menssage="* Informe o nome do Município" validar={validarCamposNome}
