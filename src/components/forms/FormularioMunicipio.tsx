@@ -5,7 +5,7 @@ import Botao from "../Botao";
 import Entrada from "../Entrada";
 import Select from "../Select";
 import services from "../../core/services/service";
-import { validarCamposNome } from "../../core/settings/ufsettings";
+import { validarCamposNome } from "../../core/settings/settings";
 
 
 interface FormularioMunicipioProps {

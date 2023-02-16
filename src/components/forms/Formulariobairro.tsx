@@ -4,7 +4,7 @@ import Bairro from "../../core/models/Bairro";
 import Municipio from "../../core/models/Municipio";
 import Uf from "../../core/models/Uf";
 import services from "../../core/services/service";
-import { validarCamposNome } from "../../core/settings/ufsettings";
+import { validarCamposNome } from "../../core/settings/settings";
 import Botao from "../Botao";
 import Entrada from "../Entrada";
 import Select from "../Select";
@@ -29,7 +29,7 @@ export default function FormularioBairro(props: FormularioBairroProps) {
     useEffect(() => {
         setNome(props?.bairro?.nome ?? '');
         setEstados(props?.estados ?? []);
-        setEstado(props?.bairro.municipio.uf ?? Uf.vazio());
+        setEstado(props?.bairro?.municipio?.uf ?? Uf.vazio());
         setMunicipio(props?.bairro?.municipio ?? Municipio.vazio());
         setMunicipios(props?.municipios ?? []);
     }, [props])

@@ -3,7 +3,7 @@ import ColecaoMunicipio from "../../backend/db/ColecaoMunicipio";
 import Municipio from "../core/models/Municipio";
 import MunicipioRepositorio from "../core/repositories/MunicipioRepositorio";
 import { validador } from "../core/services/validador";
-import { alertaSucess, alertaErro } from "../core/settings/ufsettings";
+import { alertaSucess, alertaErro } from "../core/settings/settings";
 
 
 export default function useMunicipio() {

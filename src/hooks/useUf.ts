@@ -3,9 +3,9 @@ import ColecaoUf from "../../backend/db/ColecaoUf";
 import Uf from "../core/models/Uf";
 import UfRepositorio from "../core/repositories/UfRepositorio";
 import { validador } from "../core/services/validador";
-import { alertaSucess, alertaErro, verificarExistente } from "../core/settings/ufsettings";
+import { alertaSucess, alertaErro } from "../core/settings/settings";
 
-export default function useUfs() {
+export default function useUf() {
     const repo: UfRepositorio = new ColecaoUf()
 
     const [uf, setUf] = useState<Uf>(Uf.vazio())

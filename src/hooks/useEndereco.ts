@@ -4,7 +4,7 @@ import ColecaoEndereco from "../../backend/db/ColecaoEndereco";
 import Endereco from "../core/models/Endereco";
 import EnderecoRepositorio from "../core/repositories/EnderecoRepositorio";
 import { validador } from "../core/services/validador";
-import { alertaErro, alertaSucess } from "../core/settings/ufsettings";
+import { alertaErro, alertaSucess } from "../core/settings/settings";
 
 export default function useEndereco() {
     const repo: EnderecoRepositorio = new ColecaoEndereco

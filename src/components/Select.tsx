@@ -1,3 +1,4 @@
+import services from "../core/services/service"
 
 interface SelectProps {
     children?: any
@@ -20,4 +21,29 @@ export default function Select(props: SelectProps) {
             </select>
         </div>
     )
+}
+
+export function exibirSelectEstado(props) {
+    return props.sort(services.ordenarNomeUf).map((estado, i) => {
+        return (
+            <option key={estado.id} value={estado.id} className="text-center">{estado.nomeUf} - {estado.sigla}</option>
+        )
+    })
+}
+
+export function exibirSelectMunicipio(estado, id, municipios) {
+    console.log(estado)
+    if(services.isEmpty(estado) || id){  
+        return municipios.sort(services.ordenarNome).map((municipio, i) => {
+        if(estado.id === municipio.uf.id){
+            return (
+                <option key={municipio.id} value={municipio.id} className="text-center">{municipio.nome}</option>
+            )
+        } else{
+            return false
+        }
+    })
+    } else{
+        return false
+    }
 }

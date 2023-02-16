@@ -1,11 +1,11 @@
 import FormularioUf from "../components/forms/FormularioUf";
 import Tabela from "../components/table/TabelaUf";
 import Layout from "../components/Layout";
-import useUfs from "../hooks/useUfs";
+import useUf from "../hooks/useUf";
 
 export default function uf() {
 
-    const {ufs, uf, cleanForms, salvarUf, ufSelecionado, excluirUf} = useUfs()
+    const {ufs, uf, cleanForms, salvarUf, ufSelecionado, excluirUf} = useUf()
    
     return (
         <Layout titulo="Cadastrar UF" subtitulo="Informe o nome e Sigla do Estado" cor="bg-gradient-to-br from-gray-50 via-gray-100 to-blue-300">

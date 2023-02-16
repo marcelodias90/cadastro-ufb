@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Uf from "../../core/models/Uf";
 import Botao from "../Botao";
 import Entrada from "../Entrada";
-import { validarCamposNome, validarCamposSigla, verificarExistente } from "../../core/settings/ufsettings";
+import { validarCamposNome, validarCamposSigla, verificarExistente } from "../../core/settings/settings";
 
 interface FormularioUfProps {
     uf: Uf

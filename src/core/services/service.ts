@@ -1,3 +1,5 @@
+import { hash } from "bcrypt";
+import Pessoa from "../models/Pessoa";
 
 
 
@@ -28,8 +30,23 @@ export default class services {
     
         return true;
     }
+    
+    // static async criptografarSenha(obj){
+        
+    //     const passwordHash = await hash(obj.senha, 10)
+    //     const newPessoa = new Pessoa(obj.nome, obj.sobrenome, 
+    //                                  obj.idade, obj.login, passwordHash,
+    //                                  obj.endereco, obj.id)
+    //    return newPessoa
+    // }
 
- 
+    // static handleChange(props, e)   {
+    //         const selectdId = e
+    //         const selectedOption = props.find(a => a.id === selectdId)
+    //         return selectedOption
+    // }
+
+    
 
     // existente(props: string){
     //     const existe = props.indexOf(uf => (uf === props))
