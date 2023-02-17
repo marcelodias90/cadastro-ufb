@@ -7,7 +7,7 @@ module.exports = {
   safelist: [
     { pattern: /from-(green|blue|gray)-(400|500|700)/, },
     { pattern: /to-(green|blue|gray)-(400|500|700)/, },
-    { pattern: /text-(red|green)-(500|600|800)/, }
+    { pattern: /text-(red|green|yellow|blue)-(500|600|800)/, },
   ],
   theme: {
     extend: {},

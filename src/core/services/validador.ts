@@ -16,7 +16,7 @@ export class validador {
         if (props3 === null || props3 === '') {
             return false
         }
-        if (props4 === null || props4 > 0) {
+        if (props4 === null || props4 < 1) {
             return false
         }
         else {
@@ -31,7 +31,7 @@ export class validador {
         if (props1 === null || props1 === '') {
             return false
         }
-        if (props2 === null || props2 > 0) {
+        if (props2 === null || props2 < 1  ) {
             return false
         }
         if (props3 === null || props3 === '') {

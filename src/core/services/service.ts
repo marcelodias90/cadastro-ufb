@@ -30,12 +30,12 @@ export default class services {
     
         return true;
     }
-    
+
     // static async criptografarSenha(obj){
-        
-    //     const passwordHash = await hash(obj.senha, 10)
+    //     const passwordHash = require('bcrypt')
+    //     const senhaCriptografada = passwordHash.hash(obj.senha, 10)
     //     const newPessoa = new Pessoa(obj.nome, obj.sobrenome, 
-    //                                  obj.idade, obj.login, passwordHash,
+    //                                  obj.idade, obj.login, senhaCriptografada,
     //                                  obj.endereco, obj.id)
     //    return newPessoa
     // }

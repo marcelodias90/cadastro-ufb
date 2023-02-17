@@ -35,7 +35,7 @@ export default function usePessoa() {
     }
 
     async function salvarPessoa(pessoa: Pessoa) {
-          //services.criptografarSenha(pessoa)  
+         
         if (validador.pessoaValida(pessoa.nome, pessoa.sobrenome,
             pessoa.idade, pessoa.login, pessoa.senha)) {
             await repo.salvar(pessoa)

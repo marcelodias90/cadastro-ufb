@@ -20,7 +20,7 @@ export default class Pessoa {
     }
 
     static vazio(){
-        return new Pessoa('', '', null, '', '', Endereco.vazio(), '')
+        return new Pessoa('', '', null , '', '', Endereco.vazio(), '')
     }
 
     get id(){
