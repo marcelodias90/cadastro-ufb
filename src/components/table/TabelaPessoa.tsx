@@ -37,6 +37,10 @@ export default function TabelaPessoa(props: TabelaPessoaProps) {
 
 
                     </tr>
+                    
+                        {renderizarEndereco()}
+
+                   
 
                 </>
 
@@ -45,50 +49,55 @@ export default function TabelaPessoa(props: TabelaPessoaProps) {
     }
 
     function renderizarDadosEndereco() {
-        props.pessoas?.map((pessoa, i) => {
-            return (
-                <tr >
-                    <td className="text-left p-4">Um</td>
-                    <td className="text-left p-4">5</td>
-                    <td className="text-left p-4">hawai</td>
-                    <td className="text-left p-4">ribeirao das neves</td>
-                    <td className="text-left p-4">Mg</td>
-                </tr>
 
-            )
-        })
+
+
+        return (
+            <tr >
+                <td className="text-left p-4">Um</td>
+                <td className="text-left p-4">5</td>
+                <td className="text-left p-4">hawai</td>
+                <td className="text-left p-4">ribeirao das neves</td>
+                <td className="text-left p-4">Mg</td>
+            </tr>
+
+        )
+
 
     }
 
     function renderizarEndereco() {
 
-        
+
 
         return (
+            <td className=" hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th className="text-left p-4">rua</th>
+                            <th className="text-left p-4">numero</th>
+                            <th className="text-left p-4">bairro</th>
+                            <th className="text-left p-4">municipio</th>
+                            <th className="text-center p-4">sigla</th>
+                        </tr>
 
-            <tr>
-                
-                    
+                    </thead>
+                    <tbody>
+                        {renderizarDadosEndereco()}
+                    </tbody>
+                </table>
+            </td>
 
-                        <div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th className="text-left p-4">rua</th>
-                                        <th className="text-left p-4">numero</th>
-                                        <th className="text-left p-4">bairro</th>
-                                        <th className="text-left p-4">municipio</th>
-                                        <th className="text-center p-4">sigla</th>
-                                    </tr>
-                                </thead>
-                                {/* <tbody>
-                                        {renderizarDadosEndereco()}
-                                </tbody> */}
-                            </table>
-                        </div>
-                    
-                
-            </tr>
+
+
+
+
+
+
+
+
+
         )
 
     }
@@ -120,12 +129,7 @@ export default function TabelaPessoa(props: TabelaPessoaProps) {
                 <tbody>
                     {renderizarDados()}
                 </tbody>
-                <tr>
-                    <span>
-                        {renderizarEndereco()}
-                    </span>
 
-                </tr>
             </table>
         </div>
     )

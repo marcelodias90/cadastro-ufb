@@ -1,15 +1,18 @@
 import Bairro from "./Bairro"
+import Pessoa from "./Pessoa"
 
 export default class Endereco {
     #id: string
     #rua: string
     #numero: number
     #bairro: Bairro
+    
 
     constructor(rua: string, numero: number, bairro: Bairro, id: string = null){
         this.#rua = rua,
         this.#numero = numero,
         this.#bairro = bairro,
+        
         this.#id = id
     }
 
@@ -32,4 +35,6 @@ export default class Endereco {
     get bairro(){
         return this.#bairro
     }
+
+   
 }

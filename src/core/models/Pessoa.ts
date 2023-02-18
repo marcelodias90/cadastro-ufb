@@ -49,4 +49,7 @@ export default class Pessoa {
     get endereco(){
         return this.#endereco
     }
+    setEndereco(novoEndereco){
+        this.#endereco = novoEndereco;
+    }
 }
