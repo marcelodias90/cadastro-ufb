@@ -16,7 +16,7 @@ interface FormularioEnderecoProps {
     estados: Uf[]
     bairros: Bairro[]
     municipios: Municipio[]
-    enderecoMudou?: (pesso: Pessoa) => void
+    enderecoMudou?: (endereco: Endereco) => void
     cancelado?: () => void
 }
 
@@ -24,7 +24,7 @@ export default function FormularioEndereco(props: FormularioEnderecoProps) {
     const id = props.endereco?.id
 
     const [rua, setRua] = useState('' as string)
-    const [numero, setNumero] = useState(null as number)
+    const [numero, setNumero] = useState(0 as number)
     const [estados, setEstados] = useState<Uf[]>([Uf.vazio()])
     const [estado, setEstado] = useState<Uf>(Uf.vazio())
     const [bairro, setBairro] = useState<Bairro>(Bairro.vazio())
@@ -36,7 +36,7 @@ export default function FormularioEndereco(props: FormularioEnderecoProps) {
 
     useEffect(() => {
         setRua(props?.endereco?.rua ?? '');
-        setNumero(props?.endereco?.numero ?? null);
+        setNumero(props?.endereco?.numero ?? 0);
         setEstados(props?.estados ?? [])
         setBairros(props?.bairros ?? [])
         setPessoas(props?.pessoas ?? [])
@@ -63,19 +63,24 @@ export default function FormularioEndereco(props: FormularioEnderecoProps) {
         setBairro(selectedOption)
     }
 
-    const handleChangePessoa = event => {
+    const handleChangePessoa = event => { 
         const selectdId = event
         const selectedOption = pessoas.find(pessoa => pessoa.id === selectdId)
         setPessoa(selectedOption)
     }
 
+    // function salvarEndereco(){
+    //      const novoEndereco =   new Endereco(rua, numero, bairro, id)
+    //      pessoa.setEndereco(novoEndereco) 
+    //      props.enderecoMudou(pessoa)  
+    // }
 
     return (
         <>
             <div className={`bg-zinc-300 w-2/5 rounded-md border-8 border-zinc-300 shadow-2xl ml-10 mr-10`}>
-                <Entrada id="rua" texto="Rua" />
+                <Entrada id="rua" texto="Rua" valor={rua} valorMudou={setRua}/>
                 <div className="flex">
-                    <Entrada id="numero" texto="Numero" tipo="number" tamanho="1" />
+                    <Entrada id="numero" texto="Numero" tipo="number" tamanho="1" valor={numero} valorMudou={setNumero}/>
                     <Select id="pessoas" texto="Pessoa" selectText="Pessoa" onChange={handleChangePessoa}>
                         {exibirSelectPessoa(pessoas)}
                     </Select>
@@ -93,7 +98,7 @@ export default function FormularioEndereco(props: FormularioEnderecoProps) {
                 </Select>
                 <div className="flex items-end justify-end m-3 ">
                     <Botao cor={`${id ? 'green' : 'blue'}`} className="mr-2" 
-                            >
+                         onClick={() => props.enderecoMudou?.(new Endereco(rua, numero, bairro, id))}  >
                         {props.endereco?.id ? 'Alterar' : 'Salvar'}
                     </Botao>
                     <Botao cor="gray" onClick={props.cancelado}>

@@ -6,13 +6,13 @@ export default class Endereco {
     #rua: string
     #numero: number
     #bairro: Bairro
+   
     
 
     constructor(rua: string, numero: number, bairro: Bairro, id: string = null){
         this.#rua = rua,
         this.#numero = numero,
         this.#bairro = bairro,
-        
         this.#id = id
     }
 
@@ -36,5 +36,5 @@ export default class Endereco {
         return this.#bairro
     }
 
-   
+    
 }

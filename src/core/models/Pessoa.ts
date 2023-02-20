@@ -7,9 +7,9 @@ export default class Pessoa {
     #idade: number
     #login: string
     #senha: string
-    #endereco: Endereco
+    #endereco: Endereco[]
 
-    constructor(nome: string, sobrenome: string, idade: number, login: string, senha: string, endereco: Endereco, id: string = null){
+    constructor(nome: string, sobrenome: string, idade: number, login: string, senha: string, endereco: Endereco[], id: string = null){
         this.#nome = nome,
         this.#sobrenome = sobrenome,
         this.#idade = idade,
@@ -20,7 +20,7 @@ export default class Pessoa {
     }
 
     static vazio(){
-        return new Pessoa('', '', null , '', '', Endereco.vazio(), '')
+        return new Pessoa('', '', null , '', '', [Endereco.vazio()], '')
     }
 
     get id(){

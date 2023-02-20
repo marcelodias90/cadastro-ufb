@@ -9,17 +9,18 @@ import useUfs from "../hooks/useUf";
 
 
 export default function endereco() {
-    const {endereco, cleanForms} = useEndereco()
+    const {endereco, cleanForms, salvarEndereco} = useEndereco()
     const { ufs } = useUfs()
     const { municipios } = useMunicipio()
     const { bairros } = useBairro()
-    const { pessoas } = usePessoa()
+    const { pessoas, salvarPessoa } = usePessoa()
 
     return (
         <Layout titulo="Cadastrar Endereços" subtitulo="Informe os endereços" cor="bg-gradient-to-br from-gray-50 via-gray-100 to-zinc-400">
             <FormularioEndereco pessoas={pessoas} estados={ufs} 
                             municipios={municipios} bairros={bairros} 
                             endereco={endereco} cancelado={cleanForms}
+                            enderecoMudou={salvarEndereco}
                 />
         </Layout>
     )

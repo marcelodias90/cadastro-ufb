@@ -13,22 +13,7 @@ export default class ColecaoPessoa implements PessoaRepositorio {
                 login: pessoa.login,
                 senha: pessoa.senha,
                 endereco: [{
-                      id: pessoa.endereco.id,
-                      rua: pessoa.endereco.rua,
-                      numero: pessoa.endereco.numero,
-                      bairro: {
-                            id: pessoa.endereco.bairro.id,
-                            nome: pessoa.endereco.bairro.nome,
-                            municipio: {
-                                id: pessoa.endereco.bairro.municipio.id,
-                                nome: pessoa.endereco.bairro.municipio.nome,
-                                uf: {
-                                    id: pessoa.endereco.bairro.municipio.uf.id,
-                                    nomeUf: pessoa.endereco.bairro.municipio.uf.nomeUf,
-                                    sigla: pessoa.endereco.bairro.municipio.uf.sigla
-                                }
-                            }
-                      }
+                    
                 }]
             }
         },
