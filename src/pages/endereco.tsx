@@ -1,5 +1,6 @@
 import FormularioEndereco from "../components/forms/FormularioEndereco";
 import Layout from "../components/Layout";
+import TabelaEndereco from "../components/table/TabelaEndereco";
 import useBairro from "../hooks/useBairro";
 import useEndereco from "../hooks/useEndereco";
 import useMunicipio from "../hooks/useMunicipio";
@@ -9,11 +10,11 @@ import useUfs from "../hooks/useUf";
 
 
 export default function endereco() {
-    const {endereco, cleanForms, salvarEndereco} = useEndereco()
+    const {endereco, enderecos, cleanForms, salvarEndereco, enderecoSelecionado, excluirEndereco} = useEndereco()
     const { ufs } = useUfs()
     const { municipios } = useMunicipio()
     const { bairros } = useBairro()
-    const { pessoas, salvarPessoa } = usePessoa()
+    const { pessoas } = usePessoa()
 
     return (
         <Layout titulo="Cadastrar Endereços" subtitulo="Informe os endereços" cor="bg-gradient-to-br from-gray-50 via-gray-100 to-zinc-400">
@@ -22,6 +23,7 @@ export default function endereco() {
                             endereco={endereco} cancelado={cleanForms}
                             enderecoMudou={salvarEndereco}
                 />
+            <TabelaEndereco enderecos={enderecos} enderecoSelecionado={enderecoSelecionado} enderecoExcluido={excluirEndereco}/>
         </Layout>
     )
 }

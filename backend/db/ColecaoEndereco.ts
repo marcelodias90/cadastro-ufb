@@ -22,12 +22,20 @@ export default class ColecaoEndereco implements EnderecoRepositorio{
                             sigla: endereco.bairro.municipio.uf.sigla
                         }
                     }
+                },
+                pessoa: {
+                    id: endereco.pessoa.id,
+                    nome: endereco.pessoa.nome,
+                    sobrenome: endereco.pessoa.sobrenome,
+                    idade: endereco.pessoa.idade,
+                    login: endereco.pessoa.login,
+                    senha: endereco.pessoa.senha 
                 }
             }
         },
         fromFirestore(snapshot: firebase.firestore.QueryDocumentSnapshot, options: firebase.firestore.SnapshotOptions) : Endereco {
             const dados = snapshot.data(options)
-            return new Endereco(dados.rua, dados.numero, dados.bairro, snapshot.id)
+            return new Endereco(dados.rua, dados.numero, dados.bairro, dados.pessoa, snapshot.id)
         }
     }
 

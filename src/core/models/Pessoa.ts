@@ -7,20 +7,19 @@ export default class Pessoa {
     #idade: number
     #login: string
     #senha: string
-    #endereco: Endereco[]
+    
 
-    constructor(nome: string, sobrenome: string, idade: number, login: string, senha: string, endereco: Endereco[], id: string = null){
+    constructor(nome: string, sobrenome: string, idade: number, login: string, senha: string, id: string = null){
         this.#nome = nome,
         this.#sobrenome = sobrenome,
         this.#idade = idade,
         this.#login = login,
         this.#senha = senha,
-        this.#endereco = endereco,
         this.#id = id
     }
 
     static vazio(){
-        return new Pessoa('', '', null , '', '', [Endereco.vazio()], '')
+        return new Pessoa('', '', null , '', '', '')
     }
 
     get id(){
@@ -46,10 +45,5 @@ export default class Pessoa {
     get senha(){
         return this.#senha
     }
-    get endereco(){
-        return this.#endereco
-    }
-    setEndereco(novoEndereco){
-        this.#endereco = novoEndereco;
-    }
+   
 }

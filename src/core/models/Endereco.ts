@@ -6,18 +6,19 @@ export default class Endereco {
     #rua: string
     #numero: number
     #bairro: Bairro
-   
+    #pessoa: Pessoa
     
 
-    constructor(rua: string, numero: number, bairro: Bairro, id: string = null){
+    constructor(rua: string, numero: number, bairro: Bairro, pessoa: Pessoa, id: string = null){
         this.#rua = rua,
         this.#numero = numero,
         this.#bairro = bairro,
+        this.#pessoa = pessoa,
         this.#id = id
     }
 
     static vazio(){
-        return new Endereco('', null, Bairro.vazio(), '')
+        return new Endereco('', null, Bairro.vazio(), Pessoa.vazio(), '')
     }
 
     get id(){
@@ -36,5 +37,8 @@ export default class Endereco {
         return this.#bairro
     }
 
+    get pessoa(){
+        return this.#pessoa
+    }
     
 }

@@ -11,15 +11,12 @@ export default class ColecaoPessoa implements PessoaRepositorio {
                 sobrenome: pessoa.sobrenome,
                 idade: pessoa.idade,
                 login: pessoa.login,
-                senha: pessoa.senha,
-                endereco: [{
-                    
-                }]
+                senha: pessoa.senha
             }
         },
         fromFirestore(snapshot: firebase.firestore.QueryDocumentSnapshot, options: firebase.firestore.SnapshotOptions): Pessoa {
             const dados = snapshot.data(options)
-            return new Pessoa(dados.nome, dados.sobrenome, dados.idade, dados.login, dados.senha, dados.endereco, snapshot.id)
+            return new Pessoa(dados.nome, dados.sobrenome, dados.idade, dados.login, dados.senha, snapshot.id)
         }
     }
 

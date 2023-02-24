@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import Endereco from "../../core/models/Endereco"
 import Pessoa from "../../core/models/Pessoa"
 import Botao from "../Botao"
 import Entrada from "../Entrada"
@@ -42,9 +41,9 @@ export default function FormularioPessoa(props: FormularioPessoaProps) {
                     <Entrada id="senha" texto="Senha" tipo="password" tamanho="1" valor={senha} valorMudou={setSenha}/>
                 </div>
                 <div className="flex items-end justify-end m-3 ">
-                    <Botao cor={`${id ? 'green' : 'blue'}`} className="mr-2" onClick={() => props.pessoaMudou?.
-                                                                            (new Pessoa(nome, sobrenome, +idade, 
-                                                                                        login, senha, Endereco.vazio(), id))}>
+                    <Botao cor={`${id ? 'green' : 'blue'}`} className="mr-2" onClick={() => props.pessoaMudou?.(new Pessoa(nome, sobrenome, 
+                                                                                                                            idade, login, senha, id) )
+                                                                            }>
                         {props.pessoa?.id ? 'Alterar' : 'Salvar'}
                     </Botao>
                     <Botao cor="gray" onClick={props.cancelado}>

@@ -41,6 +41,7 @@ export default function FormularioEndereco(props: FormularioEnderecoProps) {
         setBairros(props?.bairros ?? [])
         setPessoas(props?.pessoas ?? [])
         setMunicipios(props?.municipios ?? [])
+        setPessoa(props?.endereco?.pessoa ?? Pessoa.vazio())
         setBairro(props?.endereco?.bairro ?? Bairro.vazio())
         setEstado(props?.endereco?.bairro?.municipio?.uf ?? Uf.vazio())
         setMunicipio(props?.endereco.bairro.municipio ?? Municipio.vazio())
@@ -69,36 +70,31 @@ export default function FormularioEndereco(props: FormularioEnderecoProps) {
         setPessoa(selectedOption)
     }
 
-    // function salvarEndereco(){
-    //      const novoEndereco =   new Endereco(rua, numero, bairro, id)
-    //      pessoa.setEndereco(novoEndereco) 
-    //      props.enderecoMudou(pessoa)  
-    // }
-
+   
     return (
         <>
             <div className={`bg-zinc-300 w-2/5 rounded-md border-8 border-zinc-300 shadow-2xl ml-10 mr-10`}>
                 <Entrada id="rua" texto="Rua" valor={rua} valorMudou={setRua}/>
                 <div className="flex">
-                    <Entrada id="numero" texto="Numero" tipo="number" tamanho="1" valor={numero} valorMudou={setNumero}/>
-                    <Select id="pessoas" texto="Pessoa" selectText="Pessoa" onChange={handleChangePessoa}>
+                    <Entrada id="numero" texto="Número" tipo="number" tamanho="1" valor={numero} valorMudou={setNumero}/>
+                    <Select id="pessoas" texto="Pessoa" selectText="Pessoa" valor={pessoa.id} onChange={handleChangePessoa}>
                         {exibirSelectPessoa(pessoas)}
                     </Select>
                 </div>
                 <div className="flex">
-                    <Select id="bairros" texto="Bairro" selectText="Bairro" onChange={handleChangeBairro}>
+                    <Select id="bairros" texto="Bairro" selectText="Bairro" valor={bairro.id} onChange={handleChangeBairro}>
                             {exibirSelectBairro(municipio, id, bairros)}
                     </Select>
-                    <Select id="estados" texto="Estado" selectText="Estado" onChange={handleChangeEstado} tamanho="w-1/3">
+                    <Select id="estados" texto="Estado" selectText="Estado" valor={estado.id} onChange={handleChangeEstado} tamanho="w-1/3">
                         {exibirSelectEstado(estados)}
                     </Select>
                 </div>
-                <Select id="municipios" texto="Município" selectText="Município" onChange={handleChangeMunicipio}>
+                <Select id="municipios" texto="Município" selectText="Município" valor={municipio.id} onChange={handleChangeMunicipio}>
                     {exibirSelectMunicipio(estado, id, municipios)}
                 </Select>
                 <div className="flex items-end justify-end m-3 ">
                     <Botao cor={`${id ? 'green' : 'blue'}`} className="mr-2" 
-                         onClick={() => props.enderecoMudou?.(new Endereco(rua, numero, bairro, id))}  >
+                         onClick={() => props.enderecoMudou?.( new Endereco(rua, numero, bairro, pessoa, id))}>
                         {props.endereco?.id ? 'Alterar' : 'Salvar'}
                     </Botao>
                     <Botao cor="gray" onClick={props.cancelado}>
